@@ -16,6 +16,10 @@ class SpecialToken
     public function handle(Request $request, Closure $next): Response
     {
 
+        if(empty($request->bearerToken())){
+            return $next($request);
+        }
+        
         $array_token = str_split($request->bearerToken());
         $array_token_copy = $array_token;
 
