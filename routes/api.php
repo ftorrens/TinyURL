@@ -2,10 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\SpecialToken;
+use App\Http\Controllers\TinyURLController;
 
-Route::post('/v1/short-urls', function () {
-    return response()->json([
-        'status' => 'Success',
-        'mensaje' => 'Your token is valid'
-    ], 200);
-})->middleware(SpecialToken::class);   
+Route::post('/v1/short-urls', [TinyURLController::class, 'index'])->middleware(SpecialToken::class);
